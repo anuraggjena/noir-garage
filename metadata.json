@@ -1,0 +1,6 @@
+{
+  "name": "Get Inspired",
+  "description": "A dark, highly polished, and fluid landing page for deep technology and art updates designed with Instrument Serif and Inter.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
