@@ -137,8 +137,7 @@ export default function Hero({ isDayMode, scrollProgress = 0 }: HeroProps) {
           filter: `brightness(0.95) blur(${scrollProgress * 5}px)`
         }}
       >
-        <source src="/api/video/day" type="video/mp4" />
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-clouds-under-a-bright-sun-41551-large.mp4" type="video/mp4" />
+        <source src="https://cllwa54wrlahioan.public.blob.vercel-storage.com/porsche-day.realesrgan.webm" type="video/webm" />
       </video>
 
       {/* Night Mode Cinematic Background Video via direct Express proxy router */}
@@ -157,8 +156,7 @@ export default function Hero({ isDayMode, scrollProgress = 0 }: HeroProps) {
           filter: `brightness(0.92) blur(${scrollProgress * 5}px)`
         }}
       >
-        <source src="/api/video/night" type="video/mp4" />
-        <source src="https://assets.mixkit.co/videos/preview/mixkit-starry-night-sky-with-stars-and-nebula-41611-large.mp4" type="video/mp4" />
+        <source src="https://cllwa54wrlahioan.public.blob.vercel-storage.com/porsche-night.realesrgan.webm" type="video/webm" />
       </video>
 
       {/* Dynamic Darkening Overlay for smooth scroll transition */}

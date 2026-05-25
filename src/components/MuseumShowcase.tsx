@@ -12,7 +12,7 @@ interface Vehicle {
   title: string;
   specs: string[];
   hiddenFact: string;
-  videoId: string;
+  videoUrl: string;
 }
 
 const VEHICLES: Vehicle[] = [
@@ -21,21 +21,21 @@ const VEHICLES: Vehicle[] = [
     title: "Mazda RX-7 FD",
     specs: ["1.3L Twin-Rotor", "276 HP"],
     hiddenFact: "Its rotary engine was so compact, it sat entirely behind the front axle for near-perfect balance.",
-    videoId: "1m-MxYFokqeZH4AyL0j7H27UL3Aykd4KA",
+    videoUrl: "https://cllwa54wrlahioan.public.blob.vercel-storage.com/mazda.realesrgan.webm",
   },
   {
     id: "lambo",
     title: "Lamborghini LM002",
     specs: ["5.2L V12", "444 HP"],
     hiddenFact: "Originally developed from a military prototype, it became one of the world’s first luxury super SUVs.",
-    videoId: "11jDKBtxIJqnZRu75inwE9iXJ0USjMRAx",
+    videoUrl: "https://cllwa54wrlahioan.public.blob.vercel-storage.com/lambo.realesrgan.webm",
   },
   {
     id: "jaguar",
     title: "Jaguar XJ220",
     specs: ["3.5L Twin-Turbo V6", "217 MPH"],
     hiddenFact: "For years, it remained the fastest production car ever built in Britain.",
-    videoId: "1JMwcUVAp_RmnHrRGE8iI-dlVXjdyGDmt",
+    videoUrl: "https://cllwa54wrlahioan.public.blob.vercel-storage.com/jaguar.realesrgan.webm",
   }
 ];
 
@@ -62,7 +62,7 @@ export default function MuseumShowcase({ isDayMode, scrollProgress }: MuseumShow
   // Preload and cache all video files locally for smooth scrolling and zero buffering
   useEffect(() => {
     VEHICLES.forEach((v) => {
-      const url = `/api/video-by-id/${v.videoId}`;
+      const url = v.videoUrl;
       fetch(url)
         .then((res) => {
           if (!res.ok) throw new Error("Failed to load video item");
@@ -73,7 +73,7 @@ export default function MuseumShowcase({ isDayMode, scrollProgress }: MuseumShow
           setVideoBlobUrls((prev) => ({ ...prev, [v.id]: blobUrl }));
         })
         .catch((err) => {
-          console.warn(`Video preloading of ${v.title} fell back to live streaming stream:`, err);
+          console.warn(`Video preloading of ${v.title} fell back to live streaming:`, err);
         });
     });
 
@@ -148,7 +148,7 @@ export default function MuseumShowcase({ isDayMode, scrollProgress }: MuseumShow
       >
         {VEHICLES.map((v, index) => {
           const isActive = index === currentIdx;
-          const directStreamUrl = `/api/video-by-id/${v.videoId}`;
+          const directStreamUrl = v.videoUrl;
           const cachedSrc = videoBlobUrls[v.id] || directStreamUrl;
           
           return (

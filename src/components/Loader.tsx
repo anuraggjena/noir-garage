@@ -34,8 +34,8 @@ export default function Loader({ onComplete }: LoaderProps) {
     };
 
     Promise.all([
-      warmUp("/api/video/day"),
-      warmUp("/api/video/night")
+      warmUp("https://cllwa54wrlahioan.public.blob.vercel-storage.com/porsche-day.realesrgan.webm"),
+      warmUp("https://cllwa54wrlahioan.public.blob.vercel-storage.com/porsche-night.realesrgan.webm")
     ])
       .then(() => {
         setVideosLoaded(true);
